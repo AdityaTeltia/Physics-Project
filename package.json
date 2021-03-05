@@ -1,0 +1,30 @@
+{
+    "description": "Wave simulator and analyzer.",
+    "name": "Project Wave",
+    "nodejs": true,
+    "single-instance": true,
+    "webkit": {
+        "page-cache": false,
+        "java": false,
+        "plugin": false
+    },
+    "window": {
+        "fullscreen": false,
+        "resizable": false,
+        "title": "Oscillation Wave Simulator & Analyzer",
+        "always-on-top": false,
+        "frame": true,
+        "height": 600,
+        "visible": true,
+        "as_desktop": false,
+        "position": "",
+        "show_in_taskbar": true,
+        "width": 1024,
+        "toolbar": false,
+        "icon": "icon.png"
+    },
+    "version": "0.0.1",
+    "keywords": [],
+    "main": "index.html",
+    "node-main": ""
+}

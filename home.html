@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link href='./vendor/css/roboto.css' rel='stylesheet' type='text/css'/>
+    <link href="./vendor/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="./vendor/css/jquery-ui-1.10.4.min.css" rel="stylesheet"/>
+    <link href="./assets/css/style.css" rel="stylesheet"/>
+
+    <title>Oscillation Wave Simulator & Analyzer</title>
+  </head> 
+  <body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="container">
+
+      <div class="menu">
+        <img class="logo" src="./assets/images/logo.png"></img>
+        <h1>Oscillation Wave</h1>
+        <h3>Simulator & Analyzer</h3>
+        <br />
+        <br />
+        <ul class="menu-list" style="display: none;">
+          <li><a id="single_page">SINGLE WAVE MODE</a></li>
+          <li><a id="inter_page">INTERFERENCE / SUPERPOSITION</a></li>
+          <li><a id="ocean_page">OCEAN WAVE SIMULATION</a></li>
+          <li><a id="about_page">ABOUT</a></li>
+        </ul>
+        <div style="position:absolute;bottom:20px;"><p>version 0.0.1</p></div>
+      </div>
+
+      <div class="canvas-area">
+        <div class="header">
+          <div class="title">
+            <div style="float:left"><h1><a class="trigger-menu"><i class="fa fa-bars"></i></a> WAVE AND OSCILLATION</h1></div>
+            <div style="float:right"><h1><a class="playpause"><i class="fa fa-pause"></i></a></h1></div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+        <canvas id="canvas-1-bg" width="1024" height="600"></canvas>
+        <canvas id="canvas-1-wave" width="1024" height="400"></canvas>
+        <div class="controller">
+          <div id="slider_1_2" class="control-slider vertical"><div class="symbol">A</div></div>
+          <div id="slider_1_1" class="control-slider horizontal"><div class="symbol">&lambda;</div></div>
+          <div id="slider_1_3" class="control-slider horizontal"><div class="symbol">&#632;</div></div>
+          <div id="slider_1_4" class="control-slider horizontal"><div class="symbol">v</div></div>
+        </div>
+        <div class="formula">
+          <h1 id="formula_1">y = A sin (kx + wt + o)</h1>
+        </div>
+        <div class="information">
+          <div style="display:inline-block;text-align:center;margin-left: -15px;">
+            <ul>
+              <li class="amplitudo">A</li>
+              <li class="lambda">&lambda;</li>
+              <li class="phase">&#632;</li>
+              <li class="speed">v</li>
+              <li class="speed">f</li>
+              <li class="speed">T</li>
+              <li class="speed">&#969;</li>
+            </ul>
+          </div>
+          <div style="display:inline-block;">
+            <ul>
+              <li class="amplitudo">: <span id="value_1_2"></span> length unit</li>
+              <li class="lambda">: <span id="value_1_1"></span> length unit</li>
+              <li class="phase">: <span id="value_1_3"></span> degree</li>
+              <li class="speed">: <span id="value_1_4"></span> speed unit</li>
+              <li class="speed">: <span id="value_1_5"></span> Hz</li>
+              <li class="speed">: <span id="value_1_6"></span> time unit</li>
+              <li class="speed">: <span id="value_1_7"></span> rad/s</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-area">
+        <div class="header">
+          <div class="title">
+            <div style="float:left"><h1><a class="trigger-menu"><i class="fa fa-bars"></i></a> INTERFERENCE / SUPERPOSITION<small>WAVE 002 + WAVE 003</small></h1></div>
+            <div style="float:right"><h1><a class="playpause"><i class="fa fa-pause"></i></a></h1></div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+        <canvas id="canvas-2-bg" width="1024" height="600"></canvas>
+        <canvas id="canvas-2_3-wavesum" width="1024" height="400"></canvas>
+        <canvas class="small-canvas" id="canvas-2-wave" width="300" height="100"></canvas>
+        <canvas class="small-canvas" id="canvas-3-wave" width="300" height="100"></canvas>
+        <div class="controller small">
+          <div id="slider_2_2" class="control-slider vertical"><div class="symbol">A <span id="value_2_2"></span></div></div>
+          <div id="slider_2_1" class="control-slider horizontal"><div class="symbol">&lambda; <span id="value_2_1"></span></div></div>
+          <div id="slider_2_3" class="control-slider horizontal"><div class="symbol">&#632; <span id="value_2_3"></span></div></div>
+          <div id="slider_2_4" class="control-slider horizontal"><div class="symbol">v <span id="value_2_4"></span></div></div>
+        </div>
+        <div class="controller small">
+          <div id="slider_3_2" class="control-slider vertical"><div class="symbol">A <span id="value_3_2"></span></div></div>
+          <div id="slider_3_1" class="control-slider horizontal"><div class="symbol">&lambda; <span id="value_3_1"></span></div></div>
+          <div id="slider_3_3" class="control-slider horizontal"><div class="symbol">&#632; <span id="value_3_3"></span></div></div>
+          <div id="slider_3_4" class="control-slider horizontal"><div class="symbol">v <span id="value_3_4"></span></div></div>
+        </div>
+        <div class="information interference">
+          <div style="display:inline-block;text-align:center;margin-left: -15px;">
+            <ul>
+              <li class="amplitudo">A</li>
+              <li class="lambda">&lambda;</li>
+              <li class="phase">&#632;</li>
+              <li class="speed">v</li>
+              <li class="speed">f</li>
+              <li class="speed">T</li>
+              <li class="speed">&#969;</li>
+            </ul>
+          </div>
+          <div style="display:inline-block;">
+            <ul>
+              <li class="amplitudo">: <span id="value_2_3_2"></span> length unit</li>
+              <li class="lambda">: <span id="value_2_3_1"></span> length unit</li>
+              <li class="phase">: <span id="value_2_3_3"></span> degree</li>
+              <li class="speed">: <span id="value_2_3_4"></span> speed unit</li>
+              <li class="speed">: <span id="value_2_3_5"></span> Hz</li>
+              <li class="speed">: <span id="value_2_3_6"></span> time unit</li>
+              <li class="speed">: <span id="value_2_3_7"></span> rad/s</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-area ocean">
+        <div class="header">
+          <div class="title">
+            <div style="float:left"><h1><a class="trigger-menu"><i class="fa fa-bars"></i></a> OCEAN WAVE<small>SIMULATION 001</small></h1></div>
+            <div style="float:right"><h1><a class="playpause"><i class="fa fa-pause"></i></a></h1></div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+        <canvas id="canvas-4-oceanwave" width="1024" height="600"></canvas>
+        <div class="darksea"></div>
+        <div class="controller">
+          <div id="slider_4_8" class="control-slider horizontal"><div class="symbol">v<sub>wind</sub></div></div>
+          <div id="slider_4_9" class="control-slider horizontal"><div class="symbol">x<sub>(wind range)</sub></div></div>
+        </div>
+        <div class="information" style="height:200px;width:200px;">
+          <div style="display:inline-block;text-align:center;margin-left: -15px;">
+            <ul>
+              <li class="speed">v<sub>wind</sub></li>
+              <li class="speed">x<sub>fetch</sub></li>
+              <li class="speed">v<sub>drift</sub></li>
+              <li class="amplitudo">A</li>
+              <li class="lambda">&lambda;</li>
+              <li class="speed">v</li>
+              <li class="speed">f</li>
+              <li class="speed">T</li>
+              <li class="speed">&#969;</li>
+            </ul>
+          </div>
+          <div style="display:inline-block;">
+            <ul>
+              <li class="speed">: <span id="value_4_8"></span> speed unit</li>
+              <li class="speed">: <span id="value_4_10"></span> length unit</li>
+              <li class="speed">: <span id="value_4_9"></span> speed unit</li>
+              <li class="amplitudo">: <span id="value_4_2"></span> length unit</li>
+              <li class="lambda">: <span id="value_4_1"></span> length unit</li>
+              <li class="speed">: <span id="value_4_4"></span> speed unit</li>
+              <li class="speed">: <span id="value_4_5"></span> Hz</li>
+              <li class="speed">: <span id="value_4_6"></span> time unit</li>
+              <li class="speed">: <span id="value_4_7"></span> rad/s</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-area" style="background:#34495e;">
+        <div class="header">
+          <div class="title">
+            <div style="float:left"><h1><a class="trigger-menu"><i class="fa fa-bars"></i></a> ABOUT<small>PROGRAM 001</small></h1></div>
+            <div style="float:right"><h1><i class="fa fa-code"></i></h1></div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+        <div class="about content">
+          <h3>PROGRAMMER & DESIGNER</h3>
+          <h1>Muhammad Rizki A.R.M</h1>
+          <br />
+          <br />
+          <h3>LOGIC & FORMULA ANALYSIS</h3>
+          <h1>Ammar Fathin Sabili</h1>
+          <br />
+          <br />
+          <h3>PAPER & DOCUMENTATION</h3>
+          <h1>Ferdinand Antonius</h1>
+          <h1>Kemas Muhammad Ramadhan</h1>
+          <h1>Luthfi Kurnia Putra</h1>
+        </div>
+      </div>
+    </div>
+
+    <script src="./vendor/js/jquery-1.11.0.min.js"></script>
+    <script src="./vendor/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>      
